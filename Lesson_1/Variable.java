@@ -8,14 +8,13 @@ public class Variable {
         double bluetooth = 4.2D;
         char tipModel = ' \u0066 ';
         boolean modelAsus = true;
-
-            System.out.println (processorCores);
-            System.out.println (frequency);
-            System.out.println (maxMemoryCapacity);
-            System.out.println (codModell);
-            System.out.println (diagonal);
-            System.out.println (bluetooth);
-            System.out.println (tipModel);
-            System.out.println (modelAsus);
+    System.out.println(processorCores);
+    System.out.println(frequency);
+    System.out.println(maxMemoryCapacity);
+    System.out.println(codModell);
+    System.out.println(diagonal);
+    System.out.println(bluetooth);
+    System.out.println(tipModel);
+    System.out.println(modelAsus);
     }
 }
