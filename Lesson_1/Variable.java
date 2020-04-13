@@ -1,30 +1,21 @@
 public class Variable {
     public static void main(String[] args) {
-      byte ProcessorCores;
-      short Frequency;
-      int MaxMemoryCapacity;
-      long CodModell;
-      float Diagonal;
-      double Bluetooth;
-      char TipModel;
-      boolean ModelAsus;
+        byte processorCores = 2;
+        short frequency = 2300;
+        int maxMemoryCapacity = 16000000;
+        long codModell = 226633884466119977L;
+        float diagonal = 15.000000006F;
+        double bluetooth = 4.2D;
+        char tipModel = ' \u0066 ';
+        boolean modelAsus = true;
 
-        ProcessorCores=2;
-        Frequency=2300;
-        MaxMemoryCapacity=16000000;
-        CodModell=226633884466119977L;
-        Diagonal=15.000000006F;
-        Bluetooth=4.2D;
-        TipModel='\u0066';
-        ModelAsus=true;
-
-        System.out.println(ProcessorCores);
-        System.out.println(Frequency);
-        System.out.println(MaxMemoryCapacity);
-        System.out.println (CodModell);
-        System.out.println(Diagonal);
-        System.out.println(Bluetooth);
-        System.out.println(TipModel);
-        System.out.println(ModelAsus);
+            System.out.println (processorCores);
+            System.out.println (frequency);
+            System.out.println (maxMemoryCapacity);
+            System.out.println (codModell);
+            System.out.println (diagonal);
+            System.out.println (bluetooth);
+            System.out.println (tipModel);
+            System.out.println (modelAsus);
     }
 }
