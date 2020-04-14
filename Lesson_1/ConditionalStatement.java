@@ -9,30 +9,31 @@ class ConditionalStatement {
             System.out.println("You are over 20 years old ");
         }
 
-        System.out.print("enter your gender ");
-        String gender = scan.nextLine ();
-        if (gender == "Male") {
-            System.out.println("Male");
-        } else {
-              System.out.println("Female");
-          }
+        System.out.print("Are you male or female? ");
+        String male = scan.nextLine ();
+        if (male == "male") {
+            System.out.println("You are male");
+        }
+        else if (male != "male") {
+            System.out.println("female");
+        }
 
         System.out.print("enter your height ");
         double height = scan.nextDouble ();
         if (height < 1.80) {
-            System.out.println("height < 1.80");
+            System.out.println("Your height < 1.80");
         } else {
-              System.out.println("height > 1.80");
+              System.out.println("Your height > 1.80");
           }
 
-        System.out.print("Your name begins with ");
-        String name = scan.nextLine ();
-        if (name== "M") {
-            System.out.println("Your name is M ...");
-        } else if (name == "I") {
-              System.out.println("Your name is I ...");
+        System.out.print("Enter the first letter of your name ");
+        String firstNameLetter = scan.nextLine ();
+        if (firstNameLetter == "M") {
+            System.out.println("First letter of your name is M ");
+        } else if (firstNameLetter == "I") {
+              System.out.println("First letter of your name is I ");
         } else {
-              System.out.println("Your name is different");
+              System.out.println("First letter of your name is different");
         }
     }
 }
