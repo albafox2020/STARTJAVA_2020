@@ -15,7 +15,7 @@ class ConditionalStatement {
             System.out.println("You are male");
         }
         if (male != "male") {
-        System.out.println("female");
+            System.out.println("female");
         }
 
         System.out.print("enter your height ");
@@ -23,7 +23,7 @@ class ConditionalStatement {
         if (height < 1.80) {
             System.out.println("Your height < 1.80");
         } else {
-              System.out.println("Your height > 1.80");
+            System.out.println("Your height > 1.80");
         }
 
         System.out.print("Enter the first letter of your name ");
@@ -31,9 +31,9 @@ class ConditionalStatement {
         if (firstNameLetter == "M") {
             System.out.println("First letter of your name is M ");
         } else if (firstNameLetter == "I") {
-              System.out.println("First letter of your name is I ");
+            System.out.println("First letter of your name is I ");
         } else {
-              System.out.println("First letter of your name is different");
+            System.out.println("First letter of your name is different");
         }
     }
 }

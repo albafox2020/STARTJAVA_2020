@@ -12,17 +12,17 @@ public class Calculator {
         double nam2 = read.nextDouble();
 
         if (operator.equals("+")) {
-        System.out.println(" = " + (nam1 + nam2));
+            System.out.println(" = " + (nam1 + nam2));
         } else if (operator.equals("-")) {
-        System.out.println(" = " + (nam1 - nam2));
+            System.out.println(" = " + (nam1 - nam2));
         } else if (operator.equals("*")) {
-        System.out.println(" = " + (nam1 * nam2));
+            System.out.println(" = " + (nam1 * nam2));
         } else if (operator.equals("/")) {
-        System.out.println(" = " + (nam1 - nam2));
+            System.out.println(" = " + (nam1 - nam2));
         } else if (operator.equals("^")) {
-        System.out.println(" = " + Math.pow(nam1, nam2));
+            System.out.println(" = " + Math.pow(nam1, nam2));
         } else if (operator.equals("%")) {
-        System.out.println(" = " + (nam1 % nam2));
+            System.out.println(" = " + (nam1 % nam2));
         }
     }
 }
