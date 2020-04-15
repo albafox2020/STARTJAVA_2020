@@ -18,6 +18,6 @@ class Cycle {
                 sum += counter2;
             }
         } while (counter2 < 20);
-          System.out.println(" (3) "+ sum);
+        System.out.println(" (3) "+ sum);
     }
 }

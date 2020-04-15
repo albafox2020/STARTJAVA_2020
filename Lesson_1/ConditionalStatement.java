@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 class ConditionalStatement {
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         System.out.print("enter your age ");
         Scanner scan = new Scanner(System.in);
         int age = scan.nextInt();
@@ -13,8 +13,9 @@ class ConditionalStatement {
         String male = scan.nextLine();
         if (male == "male") {
             System.out.println("You are male");
-        } if (male != "male") {
-            System.out.println("female");
+        }
+        if (male != "male") {
+        System.out.println("female");
         }
 
         System.out.print("enter your height ");
