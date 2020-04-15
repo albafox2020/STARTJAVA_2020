@@ -17,8 +17,7 @@ class Cycle {
             if (counter2 % 2 != 0) {
                 sum += counter2;
             }
-        } while (counter2 < 20); {
-              System.out.println(" (3) "+ sum);
-          }
+        } while (counter2 < 20);
+          System.out.println(" (3) "+ sum);
     }
 }
