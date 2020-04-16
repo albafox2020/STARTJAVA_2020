@@ -9,10 +9,6 @@ class MyFirstGame {
         Scanner scan = new Scanner(System.in);
         int playerAttempt = scan.nextInt();
 
-        if (playerAttempt == guessedNumber) {
-            System.out.println ("You guessed");
-        }
-
         while (playerAttempt != guessedNumber) {
             System.out.print("enter again ");
             playerAttempt = scan.nextInt();
@@ -21,6 +17,8 @@ class MyFirstGame {
             } else if (playerAttempt < guessedNumber) {
                 System.out.println ("Your number is less than the guessed ");
             }
+
+            System.out.println ("You guessed");
         }
     }
 }
