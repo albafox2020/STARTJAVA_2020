@@ -2,27 +2,30 @@ import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) {
-        private static Scanner read;
-        read = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in);
         System.out.print("Enter an integer greater than zero ");
-        double nam1 = read.nextDouble();
+        double number1 = scan.nextDouble();
         System.out.print("Enter an operator (+, -, *, /, ^, %): ");
-        String operator = read.next();
+        String operator = scan.next();
         System.out.print("Enter the second number ");
-        double nam2 = read.nextDouble();
+        double number2 = scan.nextDouble();
 
         if (operator.equals("+")) {
-            System.out.println(" = " + (nam1 + nam2));
+            System.out.println(" = " + (number1 + number2));
         } else if (operator.equals("-")) {
-            System.out.println(" = " + (nam1 - nam2));
+            System.out.println(" = " + (number1 - number2));
         } else if (operator.equals("*")) {
-            System.out.println(" = " + (nam1 * nam2));
+            System.out.println(" = " + (number1 * number2));
         } else if (operator.equals("/")) {
-            System.out.println(" = " + (nam1 - nam2));
+            System.out.println(" = " + (number1 - number2));
         } else if (operator.equals("^")) {
-            System.out.println(" = " + Math.pow(nam1, nam2));
+            int sum = 1;
+            for (int i = 1; i <= (number2); i++) {
+                sum *= number1;
+            }
+            System.out.println(" = " + sum);
         } else if (operator.equals("%")) {
-            System.out.println(" = " + (nam1 % nam2));
+            System.out.println(" = " + (number1 % number2));
         }
     }
 }
