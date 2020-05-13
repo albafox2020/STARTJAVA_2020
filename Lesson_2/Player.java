@@ -1,8 +1,8 @@
 class Player {
-    private String name;
     private int number;
+    private String name;
 
-    public void setName(String name) {
+    public Player(String name) {
         this.name = name;
     }
     public String getName() {
@@ -14,4 +14,5 @@ class Player {
     public int getNumber() {
         return number;
     }
+
 }
