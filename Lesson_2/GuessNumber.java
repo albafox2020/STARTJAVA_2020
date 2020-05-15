@@ -2,21 +2,24 @@ import java.util.Random;
 import java.util.Scanner;
 
 class GuessNumber {
-        Player playerOne;
-        Player playerTwo;
+        private Player playerOne;
+        private Player playerTwo;
+
         public GuessNumber(Player playerOne, Player playerTwo) {
             this.playerOne = playerOne;
             this.playerTwo = playerTwo;
         }
-        void game() {
+
+        void playGame() {
             Random random = new Random();
             int guessedNumber = random.nextInt(101);
             boolean checkNumOne = false;
             boolean checkNumTwo = false;
+            Scanner scan = new Scanner(System.in);
+
             while (true) {
                 System.out.print(playerOne.getName() + " enters a number from 0 to 100 ");
-                Scanner scanNumberOne = new Scanner(System.in);
-                playerOne.setNumber(scanNumberOne.nextInt());
+                playerOne.setNumber(scan.nextInt());
 
                 if (playerOne.getNumber() == guessedNumber) {
                     checkNumOne = true;
@@ -27,8 +30,7 @@ class GuessNumber {
                 }
 
                 System.out.print(playerTwo.getName() + " enters a number from 0 to 100 ");
-                Scanner scanNumberTwo = new Scanner(System.in);
-                playerTwo.setNumber(scanNumberTwo.nextInt());
+                playerTwo.setNumber(scan.nextInt());
 
                 if (playerTwo.getNumber() == guessedNumber) {
                     checkNumTwo = true;
@@ -38,14 +40,10 @@ class GuessNumber {
                     System.out.println(playerTwo.getName() + " - your number is less than the guessed ");
                 }
 
-                GuessNumberTest oneWin = new GuessNumberTest();
                 if (checkNumOne) {
                 System.out.println(playerOne.getName() + " is a winner");
                 break;
-                }
-
-                GuessNumberTest twoWin = new GuessNumberTest();
-                if (checkNumTwo) {
+                } else if (checkNumTwo) {
                     System.out.println(playerTwo.getName() +" is a winner");
                     break;
                 } else {

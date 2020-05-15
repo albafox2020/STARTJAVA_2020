@@ -10,11 +10,10 @@ class GuessNumberTest {
         String answer;
         do {
             GuessNumber guessNumberOne = new GuessNumber(playerOne, playerTwo);
-            guessNumberOne.game();
+            guessNumberOne.playGame();
             do {
                 System.out.print("Want to continue? [Yes / No]: ");
-                Scanner scanAnswer = new Scanner(System.in);
-                answer = scanAnswer.next();
+                answer = scan.next();
             } while (! (answer.equalsIgnoreCase("Yes") || answer.equalsIgnoreCase("No")));
         } while (answer.equalsIgnoreCase("Yes"));
     }
