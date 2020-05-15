@@ -13,16 +13,14 @@ class GuessNumber {
         void playGame() {
             Random random = new Random();
             int guessedNumber = random.nextInt(101);
-            boolean checkNumOne = false;
-            boolean checkNumTwo = false;
             Scanner scan = new Scanner(System.in);
 
-            while (true) {
+            while (playerOne.getNumber() != guessedNumber || playerTwo.getNumber() != guessedNumber){
                 System.out.print(playerOne.getName() + " enters a number from 0 to 100 ");
                 playerOne.setNumber(scan.nextInt());
 
                 if (playerOne.getNumber() == guessedNumber) {
-                    checkNumOne = true;
+                    break;
                 } else if (playerOne.getNumber()  > guessedNumber) {
                     System.out.println(playerOne.getName() + " - your number is greater than the guessed ");
                 } else if (playerOne.getNumber()  < guessedNumber) {
@@ -33,22 +31,17 @@ class GuessNumber {
                 playerTwo.setNumber(scan.nextInt());
 
                 if (playerTwo.getNumber() == guessedNumber) {
-                    checkNumTwo = true;
+                     break;
                 } else if (playerTwo.getNumber() > guessedNumber) {
-                    System.out.println(playerTwo.getName() + " - your number is greater than the guessed ");
+                    System.out.println(playerTwo.getName() + " - your number is greater than the guessed. One more time. ");
                 } else if (playerTwo.getNumber() < guessedNumber) {
-                    System.out.println(playerTwo.getName() + " - your number is less than the guessed ");
+                    System.out.println(playerTwo.getName() + " - your number is less than the guessed. One more time. ");
                 }
-
-                if (checkNumOne) {
+            }
+            if (playerOne.getNumber() == guessedNumber) {
                 System.out.println(playerOne.getName() + " is a winner");
-                break;
-                } else if (checkNumTwo) {
-                    System.out.println(playerTwo.getName() +" is a winner");
-                    break;
-                } else {
-                    System.out.println("One more time");
-                }
+            } else {
+                System.out.println(playerTwo.getName() +" is a winner");
             }
         }
 }
