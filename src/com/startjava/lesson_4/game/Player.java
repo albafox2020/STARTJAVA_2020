@@ -2,23 +2,22 @@ package com.startjava.lesson_4.game;
 
 import java.util.Arrays;
 
-class Player {
+class Player<number> {
     private String name;
     private int number;
-    private int count = 0;
-
-    private int[] arrPl = new int[10];
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
+    private int attempt = 0;
+    private int[] enteredNums = new int[10];
 
     public Player(String name) {
         this.name = name;
+    }
+
+    public int getAttempt() {
+        return attempt;
+    }
+
+    public void setAttempt(int attempt) {
+        enteredNums[attempt] = number;
     }
 
     public String getName() {
@@ -33,19 +32,15 @@ class Player {
         this.number = number;
     }
 
-    public void setArrPl(int number, int count) {
-        arrPl[count] = number;
+    public int getEnteredNums(int attempt) {
+        return enteredNums[attempt];
     }
 
-    public int[] getArrPl() {
-        return arrPl;
+    public int[] getEnteredNums() {
+        return enteredNums;
     }
 
-    public void fill() {
-        if (count < 9) {
-            Arrays.fill(arrPl, 0, count + 1, 0);
-        } else {
-            Arrays.fill(arrPl, 0);
-        }
+    public void setEnteredNums(int number, int attempt) {
+        enteredNums[attempt] = number;
     }
 }

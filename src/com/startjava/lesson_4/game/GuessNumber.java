@@ -7,18 +7,8 @@ import java.util.Scanner;
 class GuessNumber {
         private Player playerOne;
         private Player playerTwo;
-
-
-        public int getGuessedNumber() {
-            return guessedNumber;
-        }
-
-        public void setGuessedNumber(int count) {
-            this.guessedNumber = count;
-        }
-
-        int guessedNumber;
-
+        private int guessedNumber;
+        private int attemptPlus;
         Scanner scan = new Scanner(System.in);
 
         public GuessNumber(Player playerOne, Player playerTwo) {
@@ -26,82 +16,67 @@ class GuessNumber {
             this.playerTwo = playerTwo;
         }
 
-        private void gameOnePl() {
-            System.out.print(playerOne.getName() + " enters a number from 0 to 100 ");
-            playerOne.setNumber(scan.nextInt());
-
-            if (playerOne.getNumber() > guessedNumber) {
-                System.out.println(playerOne.getName() + " - your number is greater than the guessed ");
-            } else if (playerOne.getNumber() < guessedNumber) {
-                System.out.println(playerOne.getName() + " - your number is less than the guessed ");
-            }
-
-            if (playerOne.getCount() == 9) {
-                System.out.println(playerOne.getName() + " have ended attempts ");
-            }
-        }
-
-        private void gameTwoPl() {
-            System.out.print(playerTwo.getName() + " enters a number from 0 to 100 ");
-            playerTwo.setNumber(scan.nextInt());
-
-            if (playerTwo.getNumber() > guessedNumber) {
-                System.out.println(playerTwo.getName() + " - your number is greater than the guessed. One more time. ");
-            } else if (playerTwo.getNumber() < guessedNumber) {
-                System.out.println(playerTwo.getName() + " - your number is less than the guessed. One more time. ");
-            }
-
-            if (playerTwo.getCount() == 9) {
-                System.out.println(playerTwo.getName() + " have ended attempts ");
-            }
-        }
-
-        private void vinner() {
-            if (playerOne.getNumber() == guessedNumber) {
-                System.out.println(playerOne.getName() + " guessed the number with " + playerOne.getCount() + " attempts! ");
-            } else if (playerTwo.getNumber() == guessedNumber) {
-                System.out.println(playerTwo.getName() + " guessed the number with " + playerTwo.getCount() + " attempts! ");
-            } else {
-                System.out.println("No winners ");
-            }
-        }
-
-        private void copyArr(int[] arrPl, int count) {
-            int[] arrPlCopy = Arrays.copyOf(arrPl, count);
-            System.out.println(Arrays.toString(arrPlCopy));
-        }
-
-        public void startGame() {
+        void startGame() {
             Random random = new Random();
             guessedNumber = random.nextInt(101);
-            while (playerOne.getNumber() != guessedNumber || playerTwo.getNumber() != guessedNumber) {
-                gameOnePl();
-                int countplus1 = playerOne.getCount();
-                countplus1++;
-                playerOne.setCount(countplus1);
-                if (playerOne.getNumber() == guessedNumber) {
-                    break;
-                }
 
-                gameTwoPl();
-                int countplus2 = playerTwo.getCount();
-                countplus2++;
-                playerTwo.setCount(countplus2);
-                if (playerTwo.getNumber() == guessedNumber) {
+            for (int i = 0; i < 10; i++) {
+                if (!makeMove(playerOne, playerOne.getAttempt())) {
+                    break;
+                } else if (!makeMove(playerTwo, playerOne.getAttempt())) {
+                    break;
+                } else if (playerTwo.getAttempt() == 9) {
                     break;
                 }
-                if ((playerOne.getCount() == 10) || (playerTwo.getCount() == 10)) {
-                    break;
-                }
-
             }
-            vinner();
-            copyArr(playerOne.getArrPl(), playerOne.getCount());
-            System.out.println(" ");
-            copyArr(playerTwo.getArrPl(), playerTwo.getCount());
-            playerOne.fill();
-            playerTwo.fill();
-            playerOne.setCount(0);
-            playerTwo.setCount(0);
+
+            if (playerOne.getAttempt() == 9) {
+                System.out.println(playerOne.getName() + " have ended attempts");
+            } else if (playerTwo.getAttempt() == 9) {
+                System.out.println(playerTwo.getName() + " have ended attempts");
+            }
+
+            showEnteredNums(playerOne.getEnteredNums(), playerOne.getAttempt());
+            showEnteredNums(playerTwo.getEnteredNums(), playerOne.getAttempt());
+            fill(playerOne.getEnteredNums(), playerOne.getAttempt());
+            fill(playerTwo.getEnteredNums(), playerOne.getAttempt());
+        }
+
+        private boolean makeMove(Player player, int attempt) {
+            inputNumber(player, attempt);
+            compareNumbers(player, attempt);
+            if (player.getEnteredNums(attempt) == guessedNumber) {
+                return false;
+            }
+            return playerOne.getEnteredNums(attempt) != guessedNumber;
+        }
+
+        private void inputNumber(Player player, int attempt) {
+            System.out.print(player.getName() + ", enter the number: ");
+            player.setEnteredNums(scan.nextInt(), attempt);
+            attemptPlus = player.getAttempt();
+            attemptPlus++;
+            player.setAttempt(attemptPlus);
+        }
+
+        private void compareNumbers(Player player, int attempt) {
+            if (player.getEnteredNums(attempt) > guessedNumber) {
+                System.out.println(player.getName() + " - your number is greater than the guessed" + guessedNumber);
+            } else if (player.getEnteredNums(attempt) < guessedNumber) {
+                System.out.println(player.getName() + " - your number is less than the guessed " + guessedNumber);
+            } else {
+                System.out.println(player.getName() + " guessed the number " + guessedNumber + " with " + (player.getAttempt() + 1) + " attempts. ");
+            }
+        }
+
+        private void showEnteredNums(int[] enteredNums,int attempt) {
+            int[] enteredNumsCopy = Arrays.copyOf(enteredNums, attempt + 1);
+            System.out.println(Arrays.toString(enteredNumsCopy));
+        }
+
+        private void fill(int[] enteredNums, int attempt) {
+            if (attempt < 9) {
+                Arrays.fill(enteredNums, 0, attempt + 1, 0);
+            }
         }
 }
