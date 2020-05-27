@@ -2,14 +2,26 @@ package com.startjava.lesson_4.game;
 
 import java.util.Arrays;
 
-class Player<number> {
+public class Player {
     private String name;
     private int number;
-    private int attempt = 0;
+    private int attempt;
     private int[] enteredNums = new int[10];
 
     public Player(String name) {
         this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Player(int number) {
+        this.number = number;
+    }
+
+    public int getNumber() {
+        return enteredNums[attempt];
     }
 
     public int getAttempt() {
@@ -17,30 +29,19 @@ class Player<number> {
     }
 
     public void setAttempt(int attempt) {
-        enteredNums[attempt] = number;
+        this.attempt = attempt;
     }
 
-    public String getName() {
-        return name;
+    public void intNumber(int guessNumber) {
+        enteredNums[attempt] = guessNumber;
     }
 
-    public int getNumber() {
-        return number;
+    public int[] showEnteredNums() {
+        return Arrays.copyOf(enteredNums, (attempt + 1));
     }
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public int getEnteredNums(int attempt) {
-        return enteredNums[attempt];
-    }
-
-    public int[] getEnteredNums() {
-        return enteredNums;
-    }
-
-    public void setEnteredNums(int number, int attempt) {
-        enteredNums[attempt] = number;
+    public void fillEnteredNums() {
+        Arrays.fill(enteredNums, 0, (attempt + 1), 0);
+        attempt = 0;
     }
 }
