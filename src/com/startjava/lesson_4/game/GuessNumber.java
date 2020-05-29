@@ -18,19 +18,19 @@ public class GuessNumber {
 
     public void mainGame() {
         guessedNumber = random.nextInt(101);
-        for (int i = 0; i <= 9; i++) {
+        for (int i = 1; i <= 10; i++) {
             playerOne.setAttempt(i);
-            if (!makeMove(playerOne)) {
+            if (makeMove(playerOne)) {
                 break;
             }
             playerTwo.setAttempt(i);
-            if (!makeMove(playerTwo)) {
+            if (makeMove(playerTwo)) {
                 break;
             }
         }
 
-        System.out.println(Arrays.toString(playerOne.showEnteredNums()));
-        System.out.println(Arrays.toString(playerTwo.showEnteredNums()));
+        System.out.println(Arrays.toString(playerOne.getEnteredNums()));
+        System.out.println(Arrays.toString(playerTwo.getEnteredNums()));
 
         playerOne.fillEnteredNums();
         playerTwo.fillEnteredNums();
@@ -42,13 +42,13 @@ public class GuessNumber {
             if (player.getAttempt() == 10) {
                 System.out.println(player.getName() + " have ended attempts");
             }
-            return true;
-        } else return false;
+            return false;
+        } else return true;
     }
 
     private void inputNumber(Player player) {
         System.out.print(player.getName() + ", enter the number ");
-        player.intNumber(scan.nextInt());
+        player.setNumber(scan.nextInt());
     }
 
     private boolean compareNumbers(Player player) {
@@ -57,7 +57,7 @@ public class GuessNumber {
         } else if (player.getNumber() < guessedNumber) {
             System.out.println(player.getName() + " - your number is less than the guessed ");
         } else {
-            System.out.println(player.getName() + " guessed the number with " + (player.getAttempt() + 1) + " attempts ");
+            System.out.println(player.getName() + " guessed the number with " + player.getAttempt() + " attempts ");
             return true;
         }
         return false;

@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class Player {
     private String name;
-    private int number;
     private int attempt;
     private int[] enteredNums = new int[10];
 
@@ -16,12 +15,8 @@ public class Player {
         return name;
     }
 
-    public Player(int number) {
-        this.number = number;
-    }
-
     public int getNumber() {
-        return enteredNums[attempt];
+        return enteredNums[attempt -1];
     }
 
     public int getAttempt() {
@@ -32,16 +27,16 @@ public class Player {
         this.attempt = attempt;
     }
 
-    public void intNumber(int guessNumber) {
-        enteredNums[attempt] = guessNumber;
+    public void setNumber(int guessNumber) {
+        enteredNums[attempt -1] = guessNumber;
     }
 
-    public int[] showEnteredNums() {
-        return Arrays.copyOf(enteredNums, (attempt + 1));
+    public int[] getEnteredNums() {
+        return Arrays.copyOf(enteredNums, attempt);
     }
 
     public void fillEnteredNums() {
-        Arrays.fill(enteredNums, 0, (attempt + 1), 0);
+        Arrays.fill(enteredNums, 0, attempt, 0);
         attempt = 0;
     }
 }
