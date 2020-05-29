@@ -1,0 +1,10 @@
+SELECT * FROM JaegerTest;
+SELECT * FROM JaegerTest WHERE status = 'Destroyed';
+SELECT * FROM JaegerTest WHERE mark = 'Mark-1' OR mark = 'Mark-5';
+SELECT * FROM JaegerTest ORDER BY mark DESC;
+SELECT * FROM JaegerTest WHERE LAUNCH = (SELECT MIN(launch) FROM JaegerTest);
+SELECT * FROM JaegerTest WHERE kaijuKill = (SELECT MAX(kaijuKill) FROM JaegerTest);
+SELECT * FROM JaegerTest WHERE kaijuKill = (SELECT MIN(kaijuKill) FROM JaegerTest);
+SELECT AVG(weight) FROM JaegerTest;
+UPDATE JaegerTest SET kaijuKill = kaijuKill + 1 WHERE status = 'Destroyed';
+DELETE FROM JaegerTest WHERE status = 'Destroyed';
